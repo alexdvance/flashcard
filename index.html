@@ -55,12 +55,12 @@
 			<div class="quiz-score">Score: </div>
 		</div>
 
-		<div class="quiz-cards">
+		<div class="quiz-cards" ng-repeat="question in questions">
 			<form class="quiz-card">
-				<h2 class="quiz-question">Quiz question</h2>
-				<ul class="quiz-answers list-unstyled" ng-repeat="question in questions">
+				<h2 class="quiz-question">{{question.question}}</h2>
+				<ul class="quiz-answers list-unstyled" ng-repeat="answer in question.answers">
 					<li class="quiz-answer">
-						<input type="radio" name="quiz-answer-selected" for="quiz-answer-selected" /><span class="quiz-answer">{{$index + 1}}. {{question.answer}}</span>
+						<input type="radio" name="quiz-answer-selected" for="quiz-answer-selected" /><span class="quiz-answer">{{$index + 1}}. {{answer}}</span>
 					</li>
 				</ul>
 			</div>
