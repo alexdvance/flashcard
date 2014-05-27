@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="flashcard">
+
+<head>
+	<meta charset="utf-8">
+	<title>Flashcard App</title>
+	<!-- TODO add bootstrap styles -->
+	<link rel="stylesheet" href="bootstrap/css/global.css">
+	<!-- TODO link up angular -->
+	<script src="js/flashcard.js"></script>
+</head>
+
+<body class="body">
+	<header>
+		<h1 class="title-site">Flashcard App</h1>
+	</header>
+		
+
+	<div class="section-config">
+		<form class="config-form">
+				<fieldset>
+					<label class="config-question-label " for="config-question-1">Question 1:</label>
+					<input type="text" id="config-question-1" />
+					<table>
+						<p>Answers for question 1: (use radios to mark which is correct)</p>
+						<tr>
+							<td><input type="radio" name="config-answer-correct" /></td>
+							<td><input type="text" id="config-answer-1_1"></td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="config-answer-correct" /></td>
+							<td><input type="text" id="config-answer-1_2"></td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="config-answer-correct" /></td>
+							<td><input type="text" id="config-answer-1_3"></td>
+						</tr>
+						<tr>
+							<td><input type="radio" name="config-answer-correct" /></td>
+							<td><input type="text" id="config-answer-1_4"></td>
+						</tr>
+					</table>
+				</fieldset>
+				<button class="config-submit">Submit</button>
+		</form>
+	</div>
+
+	<div class="section-quiz">
+		<div class="quiz-info">
+			<div class="quiz-score">Score: </div>
+		</div>
+
+		<div class="quiz-cards">
+			<form class="quiz-card">
+				<h2 class="quiz-question">Quiz question</h2>
+				<ul class="quiz-answers">
+					<li class="quiz-answer">
+						<input type="radio" for="quiz-answer-selected" />Quiz Answer
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
