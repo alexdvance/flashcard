@@ -1,13 +1,14 @@
 <!doctype html>
-<html ng-app="flashcard">
+<html ng-app>
 
 <head>
 	<meta charset="utf-8">
 	<title>Flashcard App</title>
 	<!-- TODO add bootstrap styles -->
-	<link rel="stylesheet" href="bootstrap/css/global.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/flashcard.css">
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>-->
-	<script src="js/angular/angular.min.js"></script>
+	<script src="js/angular.min.js"></script>
 	<script src="js/flashcard.js"></script>
 </head>
 
@@ -18,6 +19,7 @@
 		
 
 	<div class="section-config">
+		<h2 class="header-screen">Set up your quiz!</h2>
 		<form class="config-form">
 				<fieldset>
 					<label class="config-question-label " for="config-question-1">Question 1:</label>
@@ -51,6 +53,7 @@
 			<div class="quiz-score">Score: </div>
 		</div>
 
+		<h2 class="header-screen">Take your quiz!</h2>
 		<div class="quiz-cards">
 			<form class="quiz-card">
 				<h2 class="quiz-question">Quiz question</h2>
