@@ -18,7 +18,7 @@
 	</header>
 		
 
-	<div class="section-config">
+	<div class="section-config hide">
 		<h2 class="header-screen">Set up your quiz!</h2>
 		<form class="config-form">
 				<fieldset>
@@ -49,17 +49,17 @@
 	</div>
 
 	<div class="section-quiz">
+		<h2 class="header-screen">Take your quiz!</h2>
 		<div class="quiz-info">
 			<div class="quiz-score">Score: </div>
 		</div>
 
-		<h2 class="header-screen">Take your quiz!</h2>
 		<div class="quiz-cards">
 			<form class="quiz-card">
-				<h2 class="quiz-question">Quiz question</h2>
-				<ul class="quiz-answers">
+				<h2 class="quiz-question">Quiz question {{1+2}}</h2>
+				<ul class="quiz-answers list-unstyled">
 					<li class="quiz-answer">
-						<input type="radio" for="quiz-answer-selected" />Quiz Answer
+						<input type="radio" name="quiz-answer-selected" for="quiz-answer-selected" /><span class="quiz-answer">{{number}}. {{answer}}</span>
 					</li>
 				</ul>
 			</div>
