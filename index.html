@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="flashcard">
 
 <head>
 	<meta charset="utf-8">
@@ -15,6 +15,7 @@
 <body class="body">
 	<header>
 		<h1 class="title-site">Flashcard App</h1>
+		<p>Debug: Ang is working if 2 + 2 = {{2+2}}</p>
 	</header>
 		
 
@@ -48,7 +49,7 @@
 		</form>
 	</div>
 
-	<div class="section-quiz">
+	<div class="section-quiz" ng-controller="FlashcardCtrl">
 		<h2 class="header-screen">Take your quiz!</h2>
 		<div class="quiz-info">
 			<div class="quiz-score">Score: </div>
@@ -56,10 +57,10 @@
 
 		<div class="quiz-cards">
 			<form class="quiz-card">
-				<h2 class="quiz-question">Quiz question {{1+2}}</h2>
-				<ul class="quiz-answers list-unstyled">
+				<h2 class="quiz-question">Quiz question</h2>
+				<ul class="quiz-answers list-unstyled" ng-repeat="question in questions">
 					<li class="quiz-answer">
-						<input type="radio" name="quiz-answer-selected" for="quiz-answer-selected" /><span class="quiz-answer">{{number}}. {{answer}}</span>
+						<input type="radio" name="quiz-answer-selected" for="quiz-answer-selected" /><span class="quiz-answer">{{$index + 1}}. {{question.answer}}</span>
 					</li>
 				</ul>
 			</div>
