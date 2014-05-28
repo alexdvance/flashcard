@@ -1,6 +1,7 @@
-var flashcard = angular.module('flashcard', []);
+var flashcard = angular.module('flashcard', ['angularLocalStorage', 'ngCookies']);
 
-flashcard.controller('FlashcardCtrl', function ($scope) {
+flashcard.controller('FlashcardCtrl', function($scope) {
+  // storage.bind($scope,'varName',{defaultValue: 'randomValue123' ,storeName: 'customStoreKey'});
   $scope.questions = [
 		{'question': 'Are lamps bright?',
 			'answers': [
@@ -27,4 +28,5 @@ flashcard.controller('FlashcardCtrl', function ($scope) {
 			]
 		}
   ];
+  // $scope.questions = storage.get('flashcard-app-questions');
 });
