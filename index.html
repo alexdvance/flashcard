@@ -16,9 +16,11 @@
 </head>
 
 <body class="body">
-	<header>
+	<header class="navbar">
 		<h1 class="title-site">Flashcard App</h1>
 		<p>Debug: Ang is working if 2 + 2 = {{2+2}}</p>
+		<button id="quiz-config">Configure Quiz</button>
+		<button id="quiz-take">Take Quiz</button>
 	</header>
 		
 
@@ -52,17 +54,17 @@
 		</form>
 	</div>
 
-	<div class="section-quiz" ng-controller="FlashcardCtrl">
+	<div class="section-quiz hide" ng-controller="FlashcardCtrl">
 		<h2 class="header-screen">Take your quiz!</h2>
 		<div class="quiz-info">
 			<div class="quiz-score">Score: </div>
 		</div>
 
-		<div class="quiz-cards" ng-repeat="question in questions">
-			<form class="quiz-card">
+		<div class="quiz-cards">
+			<form class="quiz-card hide" ng-repeat="question in questions">
 				<h2 class="quiz-question">{{question.question}}</h2>
-				<ul class="quiz-answers list-unstyled" ng-repeat="answer in question.answers">
-					<li class="quiz-answer">
+				<ul class="quiz-answers list-unstyled" data-correct="{{question.correct}}">
+					<li class="quiz-answer" ng-repeat="answer in question.answers">
 						<input type="radio" name="quiz-answer-selected" for="quiz-answer-selected" /><span class="quiz-answer">{{$index + 1}}. {{answer}}</span>
 					</li>
 				</ul>

@@ -10,7 +10,8 @@ flashcard.controller('FlashcardCtrl', function($scope, storage) {
 				"...No, not really...?",
 				"Depends on the lamp.",
 				"My lamp is bright as hell, tbvh."
-			]
+			],
+			"correct" : 3
 		},
 		{"question": "Do you like radiators?",
 			"answers": [
@@ -18,7 +19,8 @@ flashcard.controller('FlashcardCtrl', function($scope, storage) {
 				"...No, not really...?",
 				"Depends on the radiator.",
 				"My radiator is swag as hell, tbvh."
-			]
+			],
+			"correct" : 4
 		},
 		{"question": "What did you eat for dinner?",
 			"answers": [
@@ -26,7 +28,8 @@ flashcard.controller('FlashcardCtrl', function($scope, storage) {
 				"A burrito with chips",
 				"Doritos Locos taco doritos ice cream.",
 				"Big bag of expired lollipops."
-			]
+			],
+			"correct" : 2
 		}
   ];
   storage.set('test2', questionJson);
