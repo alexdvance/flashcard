@@ -1,9 +1,9 @@
 var flashcard = angular.module('flashcard', ['angularLocalStorage', 'ngCookies']);
 
 flashcard.controller('FlashcardCtrl', function($scope, storage) {
-	storage.set('test','test value');
-  // storage.bind($scope,'varName',{defaultValue: 'randomValue123' ,storeName: 'customStoreKey'});
-  var questionJson = [
+	// storage.bind($scope,'question-1',{defaultValue: 'Are lamps bright?' ,storeName: 'question-1'});
+	// storage.bind($scope,'varName',{defaultValue: 'randomValue123' ,storeName: 'customStoreKey'});
+	var questionJson = [
 		{"question": "Are lamps bright?",
 			"answers": [
 				"Dude. Yeah.",
@@ -31,7 +31,10 @@ flashcard.controller('FlashcardCtrl', function($scope, storage) {
 			],
 			"correct" : 2
 		}
-  ];
-  storage.set('test2', questionJson);
-  $scope.questions = storage.get('test2');
+	];
+	storage.set('questionKey', questionJson);
+	$scope.questions = storage.get('questionKey');
+
+	$scope.question1 = $scope.questions[0].question;
+
 });

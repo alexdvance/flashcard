@@ -16,7 +16,7 @@
 	<script src="js/flashcard-quiz.js"></script>
 </head>
 
-<body class="body">
+<body class="body" ng-controller="FlashcardCtrl">
 	<header class="navbar">
 		<h1 class="title-site">Flashcard App</h1>
 		<!-- <p>Debug: Ang is working if 2 + 2 = {{2+2}}</p> -->
@@ -30,7 +30,7 @@
 		<form class="config-form">
 				<fieldset>
 					<label class="config-question-label " for="config-question-1">Question 1:</label>
-					<input type="text" id="config-question-1" />
+					<input type="text" id="config-question-1" ng-model="question1" />
 					<table>
 						<p>Answers for question 1: (use radios to mark which is correct)</p>
 						<tr>
@@ -55,7 +55,29 @@
 		</form>
 	</div>
 
-	<div class="section-quiz hide" ng-controller="FlashcardCtrl">
+	<div class="section-quiz hide">
+		<h2 class="header-screen">Take your quiz!</h2>
+		<div class="quiz-info">
+			<div>Score: <span id="quiz-score" class="quiz-score">0</span></div>
+		</div>
+
+		<div class="quiz-cards">
+			<form class="quiz-card hide" ng-repeat="question in questions" data-answer-correct="{{question.correct}}">
+				<h2 class="quiz-question">{{question1}}</h2>
+				<ul class="quiz-answers list-unstyled">
+					<li class="quiz-answer" ng-repeat="answer in question.answers">
+						<input type="radio" data-answer-number="{{$index + 1}}" name="quiz-answer-radio-{{$parent.$index + 1}}" class="quiz-answer-radio" id="quiz-answer-radio-{{$parent.$index + 1}}-{{$index + 1}}" /><label class="quiz-answer" for="quiz-answer-radio-{{$parent.$index + 1}}-{{$index + 1}}">{{$index + 1}}. {{answer}}</label>
+					</li>
+				</ul>
+				<div class="next-question-fields hide">
+					<div class="error">Sorry. Correct answer was {{question.correct}}.</div>
+					<div class="success">Nice job! You chose correctly.</div>
+					<button class="next-question btn btn-primary">Next Question</button>
+				</div>
+			</div>
+
+	<!-- USING JQUERY -->
+<!-- 	<div class="section-quiz hide" ng-controller="FlashcardCtrl">
 		<h2 class="header-screen">Take your quiz!</h2>
 		<div class="quiz-info">
 			<div>Score: <span id="quiz-score" class="quiz-score">0</span></div>
@@ -75,7 +97,21 @@
 					<button class="next-question btn btn-primary">Next Question</button>
 				</div>
 			</div>
-		</div>
+		<div class="quiz-cards">
+			<form class="quiz-card hide" ng-repeat="question in questions" data-answer-correct="{{question.correct}}">
+				<h2 class="quiz-question">{{question.question}}</h2>
+				<ul class="quiz-answers list-unstyled">
+					<li class="quiz-answer" ng-repeat="answer in question.answers">
+						<input type="radio" data-answer-number="{{$index + 1}}" name="quiz-answer-radio-{{$parent.$index + 1}}" class="quiz-answer-radio" id="quiz-answer-radio-{{$parent.$index + 1}}-{{$index + 1}}" /><label class="quiz-answer" for="quiz-answer-radio-{{$parent.$index + 1}}-{{$index + 1}}">{{$index + 1}}. {{answer}}</label>
+					</li>
+				</ul>
+				<div class="next-question-fields hide">
+					<div class="error">Sorry. Correct answer was {{question.correct}}.</div>
+					<div class="success">Nice job! You chose correctly.</div>
+					<button class="next-question btn btn-primary">Next Question</button>
+				</div>
+			</div>
+		</div> -->
 	</div>
 </body>
 </html>
