@@ -1,9 +1,19 @@
-var flashcard = angular.module('flashcard', ['angularLocalStorage', 'ngCookies']);
+var flashcard = angular.module('flashcard', ['mongolabResource', 'angularLocalStorage', 'ngCookies']);
 
-flashcard.controller('FlashcardCtrl', function($scope, storage) {
+flashcard.constant('API_KEY', '2oG0UQM7BSXLG2XtawERrJtviFj5yzTf');
+flashcard.constant('DB_NAME', 'flashcard');
+
+flashcard.factory('Project', function ($mongolabResource) {
+    return $mongolabResource('projects');
+});
+
+flashcard.controller('FlashcardCtrl', function($scope, storage, Project) {
 	// storage.bind($scope,'question-1',{defaultValue: 'Are lamps bright?' ,storeName: 'question-1'});
 	// storage.bind($scope,'varName',{defaultValue: 'randomValue123' ,storeName: 'customStoreKey'});
-	var questionJson = [
+	// var restUrl = "https://api.mongolab.com/api/1/databases?apiKey="
+  $scope.projects = Project.query();
+
+	var defaultQuestionJson = [
 		{"question": "Are lamps bright?",
 			"answers": [
 				"Dude. Yeah.",
@@ -32,7 +42,7 @@ flashcard.controller('FlashcardCtrl', function($scope, storage) {
 			"correct" : 2
 		}
 	];
-	storage.set('questionKey', questionJson);
+	storage.set('questionKey', defaultQuestionJson);
 	$scope.questions = storage.get('questionKey');
 
 	$scope.question1 = $scope.questions[0].question;

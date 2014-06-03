@@ -11,9 +11,12 @@
 		});
 		$("#quiz-take").on("click", function(e){
 			e.preventDefault();
-			$(".section-quiz").removeClass("hide");
-			$(".section-config").addClass("hide");
-			runQuiz(0);
+
+			if($(".section-quiz").hasClass("hide")) {
+				$(".section-quiz").removeClass("hide");
+				$(".section-config").addClass("hide");
+				runQuiz(0);
+			}
 		});
 	});
 
