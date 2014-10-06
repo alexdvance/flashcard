@@ -9,23 +9,26 @@
 	<link rel="stylesheet" href="css/flashcard.css">
 	<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>-->
 	<script src="js/jquery.min.js"></script>
-	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-route.js"></script>
+ 	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="js/mongolabResourceHttp.js"></script>
 	<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 	<script src="bower_components/angularLocalStorage/src/angularLocalStorage.js"></script>
 	<script src="js/flashcard.js"></script>
 	<script src="js/flashcard-quiz.js"></script>
 </head>
 
-<body class="body" ng-controller="FlashcardCtrl">
-	<header class="navbar">
+<body class="body">
+	<header class="navbar" ng-controller="FlashcardQuizCtrl">
 		<h1 class="title-site">Flashcard App</h1>
 		<!-- <p>Debug: Ang is working if 2 + 2 = {{2+2}}</p> -->
 		<button class="btn" id="quiz-config">Configure Quiz</button>
-		<button class="btn" id="quiz-take">Take Quiz</button>
+		<button class="btn" id="quiz-take" ng-click="takeQuiz()">Take Quiz</button>
 	</header>
 		
 
-	<div class="section-config hide">
+	<div class="section-config hide" ng-controller="FlashcardConfigCtrl">
 		<h2 class="header-screen">Set up your quiz!</h2>
 		<form class="config-form">
 				<fieldset>
@@ -34,36 +37,36 @@
 					<table>
 						<p>Answers for question 1: (use radios to mark which is correct)</p>
 						<tr>
-							<td><input type="radio" name="config-answer-correct" /></td>
-							<td><input type="text" id="config-answer-1_1"></td>
+							<td><input type="radio" ng-model="correct" value="1" name="config-answer-correct" /></td>
+							<td><input type="text" id="config-answer-1_1" ng-model="answer1_1"></td>
 						</tr>
 						<tr>
-							<td><input type="radio" name="config-answer-correct" /></td>
-							<td><input type="text" id="config-answer-1_2"></td>
+							<td><input type="radio" ng-model="correct" value="2" name="config-answer-correct" /></td>
+							<td><input type="text" id="config-answer-1_2" ng-model="answer1_2"></td>
 						</tr>
 						<tr>
-							<td><input type="radio" name="config-answer-correct" /></td>
-							<td><input type="text" id="config-answer-1_3"></td>
+							<td><input type="radio" ng-model="correct" value="3" name="config-answer-correct" /></td>
+							<td><input type="text" id="config-answer-1_3" ng-model="answer1_3"></td>
 						</tr>
 						<tr>
-							<td><input type="radio" name="config-answer-correct" /></td>
-							<td><input type="text" id="config-answer-1_4"></td>
+							<td><input type="radio" ng-model="correct" value="4" name="config-answer-correct" /></td>
+							<td><input type="text" id="config-answer-1_4" ng-model="answer1_4"></td>
 						</tr>
 					</table>
 				</fieldset>
-				<button class="config-submit">Submit</button>
+				<button class="config-submit" ng-click="submitQuestionConfig()">Submit</button>
 		</form>
 	</div>
 
-	<div class="section-quiz hide">
+	<div class="section-quiz hide" ng-controller="FlashcardQuizCtrl">
 		<h2 class="header-screen">Take your quiz!</h2>
 		<div class="quiz-info">
 			<div>Score: <span id="quiz-score" class="quiz-score">0</span></div>
 		</div>
 
 		<div class="quiz-cards">
-			<form class="quiz-card hide" ng-repeat="question in questions" data-answer-correct="{{question.correct}}">
-				<h2 class="quiz-question">{{question1}}</h2>
+			<form class="quiz-card hide" data-answer-correct="{{questions.correct}}" ng-repeat="question in questions">
+				<h2 class="quiz-question">{{question.question}}</h2>
 				<ul class="quiz-answers list-unstyled">
 					<li class="quiz-answer" ng-repeat="answer in question.answers">
 						<input type="radio" data-answer-number="{{$index + 1}}" name="quiz-answer-radio-{{$parent.$index + 1}}" class="quiz-answer-radio" id="quiz-answer-radio-{{$parent.$index + 1}}-{{$index + 1}}" /><label class="quiz-answer" for="quiz-answer-radio-{{$parent.$index + 1}}-{{$index + 1}}">{{$index + 1}}. {{answer}}</label>
